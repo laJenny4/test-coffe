@@ -1,29 +1,22 @@
-/* app/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* app/globals.css — Tailwind CSS v4 */
+@import "tailwindcss";
 
-:root {
-  --font-playfair: 'Playfair Display', serif;
-  --font-inter: 'Inter', sans-serif;
+/*
+  @theme inline tells Tailwind v4 to use the CSS variables defined by
+  Next.js font system (set on <body> via className) without redefining them,
+  which avoids the circular reference issue.
+*/
+@theme inline {
+  --font-playfair: var(--font-playfair);
+  --font-inter: var(--font-inter);
 }
 
-* {
+html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-inter);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair);
-}
-
-.font-playfair {
-  font-family: var(--font-playfair);
-}
-
-.font-inter {
-  font-family: var(--font-inter);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
