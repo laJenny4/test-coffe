@@ -60,7 +60,7 @@ export default function Home() {
       descripcion: "Cremoso pastel de queso con base de galleta",
       precio: "$4.50",
       amount: 0.002,
-      imagen: "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?w=400&h=400&fit=crop",
+      imagen: "https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=400&h=400&fit=crop",
     },
     {
       nombre: "Americano",
@@ -260,7 +260,7 @@ export default function Home() {
                   {[...Array(5)].map((_, j) => <span key={j} style={{ color: "#fbbf24", fontSize: "1.1rem" }}>★</span>)}
                 </div>
                 <p style={{ color: "rgba(255,251,235,0.87)", fontSize: "1rem", lineHeight: 1.8, fontStyle: "italic", marginBottom: "2rem" }}>
-                  "{t.comentario}"
+                  `{t.comentario}`
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                   <Image src={t.avatar} alt={t.nombre} width={52} height={52} style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid rgba(217,119,6,0.4)", flexShrink: 0 }} />
