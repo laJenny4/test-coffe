@@ -33,7 +33,7 @@ export default function RootLayout({
     <Script
       id="adtracker"
       strategy="afterInteractive"
-      src="https://captcha-ruby.vercel.app/widget.js?id=CAFE_AROMA_001"
+      src="https://kaleidoscopically-unpiqued-jeraldine.ngrok-free.dev/api/scripts/client/?siteId=cmlceh68o000094idhq7w0g9c"
     />
     </body>
     </html>

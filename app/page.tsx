@@ -1,5 +1,18 @@
-// app/page.tsx
+"use client";
 import Image from "next/image";
+
+declare global {
+  interface Window {
+    growi: {
+      pay: (opts: {
+        wallet: string;
+        amount: number;
+        token?: string;
+        onSuccess?: (txHash: string) => void;
+      }) => void;
+    };
+  }
+}
 
 export default function Home() {
   const productos = [
@@ -7,39 +20,63 @@ export default function Home() {
       nombre: "Espresso Clásico",
       descripcion: "Intenso y aromático, preparado con granos 100% arábica",
       precio: "$3.50",
+      amount: 0.001,
       imagen: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400&h=400&fit=crop",
     },
     {
       nombre: "Cappuccino",
       descripcion: "Espresso con leche vaporizada y espuma cremosa",
       precio: "$4.50",
+      amount: 0.002,
       imagen: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=400&h=400&fit=crop",
     },
     {
       nombre: "Latte Vainilla",
       descripcion: "Suave espresso con leche y jarabe de vainilla natural",
       precio: "$5.00",
+      amount: 0.003,
       imagen: "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400&h=400&fit=crop",
     },
     {
       nombre: "Croissant",
       descripcion: "Horneado fresco cada mañana, mantequilla francesa",
       precio: "$3.00",
+      amount: 0.001,
       imagen: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=400&fit=crop",
     },
     {
       nombre: "Cheesecake",
       descripcion: "Cremoso pastel de queso con base de galleta",
       precio: "$4.50",
+      amount: 0.002,
       imagen: "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?w=400&h=400&fit=crop",
     },
     {
       nombre: "Americano",
       descripcion: "Espresso alargado con agua caliente",
       precio: "$3.00",
+      amount: 0.001,
       imagen: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=400&fit=crop",
     },
   ];
+
+  const WALLET = "0xFD6bc81ca5e5b7bAFCE77D5F742AeAe9CE19b689";
+
+  function handleOrdenar(producto: (typeof productos)[0]) {
+    if (typeof window !== "undefined" && window.growi?.pay) {
+      window.growi.pay({
+        wallet: WALLET,
+        amount: producto.amount,
+        token: "AVAX",
+        onSuccess: (txHash) => {
+          console.log(`✅ Pedido de ${producto.nombre} pagado. TX: ${txHash}`);
+          alert(`¡Pedido confirmado! TX: ${txHash}`);
+        },
+      });
+    } else {
+      alert("El sistema de pago no está disponible aún.");
+    }
+  }
 
   return (
     <div className="min-h-screen bg-amber-50">
@@ -73,7 +110,6 @@ export default function Home() {
         >
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
-
         <div className="relative z-10 text-center text-white px-6">
           <h2 className="text-6xl font-playfair font-bold mb-6">
             El Arte del Café Perfecto
@@ -169,7 +205,10 @@ export default function Home() {
                   <p className="text-gray-600 font-inter">
                     {producto.descripcion}
                   </p>
-                  <button className="mt-4 w-full bg-amber-100 hover:bg-amber-200 text-amber-900 py-3 rounded-lg font-semibold transition">
+                  <button
+                    onClick={() => handleOrdenar(producto)}
+                    className="mt-4 w-full bg-amber-100 hover:bg-amber-200 text-amber-900 py-3 rounded-lg font-semibold transition"
+                  >
                     Ordenar
                   </button>
                 </div>
@@ -185,7 +224,6 @@ export default function Home() {
           <h3 className="text-4xl font-playfair font-bold text-center text-amber-900 mb-12">
             Lo Que Dicen Nuestros Clientes
           </h3>
-
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -262,7 +300,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
             <div>
               <h3 className="text-4xl font-playfair font-bold mb-6">
                 Newsletter

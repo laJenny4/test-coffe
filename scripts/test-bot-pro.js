@@ -47,7 +47,7 @@ async function simulateBot() {
             }
         });
 
-        await page.goto('http://localhost:3000', { waitUntil: 'networkidle2' });
+        await page.goto('test-coffe.vercel.app', { waitUntil: 'networkidle2' });
 
         await new Promise(r => setTimeout(r, 5000));
         await browser.close();
