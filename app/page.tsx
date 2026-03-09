@@ -8,6 +8,8 @@ declare global {
         wallet: string;
         amount: number;
         token?: string;
+        influencerId?: string;
+        campaignId?: string;
         onSuccess?: (txHash: string) => void;
       }) => void;
     };
@@ -68,8 +70,10 @@ export default function Home() {
         wallet: WALLET,
         amount: producto.amount,
         token: "AVAX",
+        influencerId: "id_del_influencer",
+        campaignId: "id_de_la_campaña",
         onSuccess: (txHash) => {
-          console.log(`✅ Pedido de ${producto.nombre} pagado. TX: ${txHash}`);
+          console.log(`Pedido de ${producto.nombre} pagado. TX: ${txHash}`);
           alert(`¡Pedido confirmado! TX: ${txHash}`);
         },
       });
