@@ -79,7 +79,7 @@ export default function Home() {
         wallet: WALLET,
         amount: producto.amount,
         token: "AVAX",
-        influencerId: "cmlbkkymp0000t4idjlqovrkd",
+        influencerId: "cmmnpcl9a0001qg0z43ojv7hj",
         campaignId: "cmlcg2vle000094id2ejtoagk",
         onSuccess: (txHash) => {
           console.log(`Pedido de ${producto.nombre} pagado. TX: ${txHash}`);

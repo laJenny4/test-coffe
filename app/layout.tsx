@@ -33,7 +33,7 @@ export default function RootLayout({
     <Script
       id="adtracker"
       strategy="afterInteractive"
-      src="https://kaleidoscopically-unpiqued-jeraldine.ngrok-free.dev/api/scripts/client/?siteId=cmlceh68o000094idhq7w0g9c"
+      src="https://kaleidoscopically-unpiqued-jeraldine.ngrok-free.dev/api/scripts/client"
     />
     </body>
     </html>
