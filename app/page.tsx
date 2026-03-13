@@ -78,7 +78,7 @@ export default function Home() {
       window.growi.pay({
         wallet: WALLET,
         amount: producto.amount,
-        token: "AVAX",
+        token: "USDC",
         influencerId: "cmmnpcl9a0001qg0z43ojv7hj",
         campaignId: "cmlcg2vle000094id2ejtoagk",
         onSuccess: (txHash) => {
