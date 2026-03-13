@@ -83,11 +83,10 @@ export default function Home() {
         campaignId: "cmlcg2vle000094id2ejtoagk",
         onSuccess: (txHash) => {
           console.log(`Pedido de ${producto.nombre} pagado. TX: ${txHash}`);
-          alert(`¡Pedido confirmado! TX: ${txHash}`);
         },
       });
     } else {
-      alert("El sistema de pago no está disponible aún.");
+      console.error("El sistema de pago no está disponible aún.");
     }
   }
 
